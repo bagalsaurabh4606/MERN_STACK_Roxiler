@@ -7,6 +7,7 @@ const initializeDatabase = async (req, res) => {
     const response = await axios.get('https://s3.amazonaws.com/roxiler.com/product_transaction.json');
     const transactions = response.data;
 
+    console.log("response data comming from database",response)
     await Transaction.deleteMany({});
     const processedTransactions = transactions.map(transaction => {
       const dateOfSale = new Date(transaction.dateOfSale);
@@ -26,46 +27,48 @@ const initializeDatabase = async (req, res) => {
 // List transactions with pagination and search
 const listTransactions = async (req, res) => {
   const { month, search = '', page = 1, perPage = 10 } = req.query;
-console.log("req body recived from front end ",req.query)
-  // Validate month
-  if (!month || month < 1 || month > 12) {
-    return res.status(400).json({ error: 'Invalid month parameter' });
-  }
 
-  const startDate = new Date(`2023-${month}-01`);
+  console.log("Received query object from frontend:", req.query);
+
+  // Create the start and end dates based on the month
+  const startDate = new Date(`2021-${month}-01`);
   const endDate = new Date(`2023-${month}-31`);
 
+  // Build the query object
   const query = {
-    dateOfSale: { $gte: startDate, $lte: endDate },
+    dateOfSale: { $gte: startDate, $lte: endDate }, // Filter by date range
     $or: [
-      { title: new RegExp(search, 'i') }, // Search in title
-      { description: new RegExp(search, 'i') }, // Search in description
+      { title: new RegExp(search, 'i') },  // Case-insensitive search in title
+      { description: new RegExp(search, 'i') },  // Case-insensitive search in description
     ],
   };
 
-  // Optional: Add numeric price search if search is numeric
+  // If search is numeric, add a price search
   if (!isNaN(search) && search !== '') {
     query.$or.push({ price: Number(search) });
   }
+
+  // Log the final query object
+  console.log("MongoDB query object:", query);
 
   try {
     const transactions = await Transaction.find(query)
       .skip((page - 1) * perPage)
       .limit(Number(perPage));
 
+    // Log the fetched transactions for debugging
+    console.log("Transactions fetched from MongoDB:", transactions);
+
     const totalTransactions = await Transaction.countDocuments(query);
-
-    // Check if transactions are found
-    if (transactions.length === 0) {
-      return res.status(404).json({ message: 'No transactions found for the given criteria.' });
-    }
-
+    
+    console.log("total transactions",totalTransactions)
     res.json({ transactions, totalTransactions });
   } catch (error) {
     console.error('Error fetching transactions:', error);
     res.status(500).json({ error: 'Error fetching transactions' });
   }
 };
+
 
 // Get statistics for selected month
 const getStatistics = async (req, res) => {

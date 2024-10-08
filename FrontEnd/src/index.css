@@ -1,32 +1,35 @@
-/* TransactionsTable.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-.transactions-container {
-  max-width: 800px;
-  margin: 20px auto;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #2c3e50;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.transactions-container h2 {
-  text-align: center;
-  color: #333;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 th, td {
@@ -36,65 +39,32 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
-  color: #333;
+  background-color: #3498db;
+  color: white;
 }
 
-tr:hover {
-  background-color: #f5f5f5;
+tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
-/* Pagination controls */
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.pagination button {
+button {
   padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
-  color: white;
   cursor: pointer;
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.pagination span {
-  align-self: center;
-}
-
-
-
-
-
-
-/* barchart */
-select {
-  margin-bottom: 20px;
-  padding: 8px;
-  font-size: 16px;
-}
-
-h1 {
-  margin-bottom: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table, th, td {
-  border: 1px solid black;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
+button:hover {
+  background-color: #2980b9;
 }

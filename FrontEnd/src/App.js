@@ -26,9 +26,9 @@ const App = () => {
       </select>
 
       <TransactionsTable selectedMonth={selectedMonth} />
-      {/* <StatisticsBox selectedMonth={selectedMonth} />
+       <StatisticsBox selectedMonth={selectedMonth} />
       <BarChart selectedMonth={selectedMonth} />
-      <PieChart selectedMonth={selectedMonth} /> */}
+      {/*<PieChart selectedMonth={selectedMonth} /> */}
     </div>
   );
 };

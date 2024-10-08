@@ -18,19 +18,20 @@ const TransactionsTable = ({ selectedMonth }) => {
     try {
       const response = await axios.get('http://localhost:5000/api/transactions', {
         params: {
-          month: selectedMonth,
+          month: selectedMonth, // Make sure 'selectedMonth' is defined
           search,
           page,
           perPage,
         },
       });
-      console.log("Response Data:", response.data); // Log the response data
-      setTransactions(response.data.transactions); // Set the fetched transactions
-      setTotalTransactions(response.data.totalTransactions); // Set the total transaction count
+      console.log("response data", response.data);
+      setTransactions(response.data.transactions);
+      setTotalTransactions(response.data.totalTransactions);
     } catch (error) {
-      console.error('Error fetching transactions:', error); // Log any errors
+      console.error('Error fetching transactions:', error);
     }
   };
+  
 
   console.log("Fetched Transactions:", transactions); // Log the transactions state
 

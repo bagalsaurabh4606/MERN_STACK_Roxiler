@@ -13,6 +13,7 @@ const StatisticsBox = ({ selectedMonth }) => {
       const response = await axios.get('http://localhost:5000/api/statistics', {
         params: { month: selectedMonth },
       });
+      console.log("statastic data",response)
       setStatistics(response.data);
     } catch (error) {
       console.error('Error fetching statistics:', error);

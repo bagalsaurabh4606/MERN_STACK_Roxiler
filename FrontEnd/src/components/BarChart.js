@@ -28,9 +28,11 @@ const BarChart = ({ selectedMonth }) => {
       const response = await axios.get('http://localhost:5000/api/bar-chart', {
         params: { month: selectedMonth },
       });
-
+      
+      console.log("Bar Chart API Response:", response.data); // Log the API response
+      
       const priceRanges = response.data;
-
+  
       // Ensure priceRanges is defined and has data before setting state
       if (priceRanges && Object.keys(priceRanges).length > 0) {
         setData({
@@ -56,6 +58,7 @@ const BarChart = ({ selectedMonth }) => {
       setLoading(false);
     }
   };
+  
 
   // Ensure there is valid data before rendering the chart
   return loading ? (

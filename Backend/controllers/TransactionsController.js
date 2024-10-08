@@ -78,7 +78,7 @@ const getStatistics = async (req, res) => {
     return res.status(400).json({ error: 'Invalid month parameter' });
   }
 
-  const startDate = new Date(`2023-${month}-01`);
+  const startDate = new Date(`2021-${month}-01`);
   const endDate = new Date(`2023-${month}-31`);
 
   try {
@@ -107,7 +107,7 @@ const getBarChart = async (req, res) => {
     return res.status(400).json({ error: 'Invalid month parameter' });
   }
 
-  const startDate = new Date(`2023-${month}-01`);
+  const startDate = new Date(`2021-${month}-01`);
   const endDate = new Date(`2023-${month}-31`);
 
   try {
@@ -159,7 +159,7 @@ const getPieChart = async (req, res) => {
     return res.status(400).json({ error: 'Invalid month parameter' });
   }
 
-  const startDate = new Date(`2023-${month}-01`);
+  const startDate = new Date(`2021-${month}-01`);
   const endDate = new Date(`2023-${month}-31`);
 
   try {

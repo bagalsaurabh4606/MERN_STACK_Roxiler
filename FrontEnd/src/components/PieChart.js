@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
+import { Bar, Pie } from 'react-chartjs-2';
+
+// Register elements
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
+
 
 const PieChart = ({ selectedMonth }) => {
   const [data, setData] = useState({});
@@ -13,7 +18,7 @@ const PieChart = ({ selectedMonth }) => {
   const fetchPieChartData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/pie-chart', {
+      const response = await axios.get('http://localhost:5000/api/piechart', {
         params: { month: selectedMonth },
       });
 
@@ -55,7 +60,10 @@ const PieChart = ({ selectedMonth }) => {
   return loading ? (
     <p>Loading Pie Chart...</p>
   ) : data.labels && data.labels.length > 0 ? (
-    <Pie data={data} />
+    <div className='piechart'>
+     <Pie data={data} />
+    </div>
+    
   ) : (
     <p>No data available for the selected month.</p>
   );

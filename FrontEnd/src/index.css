@@ -68,3 +68,40 @@ button {
 button:hover {
   background-color: #2980b9;
 }
+
+.main_container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+/* StatisticsBox styling */
+.statistics-box {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.statistics-box h3 {
+  color: #4a90e2;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.statistics-box p {
+  font-size: 1rem;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+.statistics-box p strong {
+  color: #2c3e50;
+}

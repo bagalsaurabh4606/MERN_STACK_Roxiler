@@ -22,7 +22,7 @@ router.get('/statistics', getStatistics);
 router.get('/bar-chart', getBarChart);
 
 // Get pie chart data for a selected month
-router.get('/pie-chart', getPieChart);
+router.get('/piechart', getPieChart);
 
 // Get combined data
 router.get('/combined', getCombinedData);

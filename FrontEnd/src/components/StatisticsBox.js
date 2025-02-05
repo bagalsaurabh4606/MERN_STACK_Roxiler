@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
 const StatisticsBox = ({ selectedMonth }) => {
   const [statistics, setStatistics] = useState({ totalSale: 0, soldItems: 0, notSoldItems: 0 });
 
@@ -21,7 +20,7 @@ const StatisticsBox = ({ selectedMonth }) => {
   };
 
   return (
-    <div>
+    <div className='statistics-box'>
       <h3>Statistics for {selectedMonth}</h3>
       <p>Total Sale Amount: {statistics.totalSale}</p>
       <p>Sold Items: {statistics.soldItems}</p>

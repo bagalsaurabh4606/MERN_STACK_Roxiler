@@ -64,7 +64,10 @@ const BarChart = ({ selectedMonth }) => {
   return loading ? (
     <p>Loading Bar Chart...</p>
   ) : data.labels && data.labels.length > 0 ? (
-    <Bar data={data} />
+
+     <Bar data={data} />
+
+    
   ) : (
     <p>No data available for the selected month.</p>
   );

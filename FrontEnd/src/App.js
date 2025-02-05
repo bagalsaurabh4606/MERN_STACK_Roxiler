@@ -25,10 +25,14 @@ const App = () => {
         <option value="12">December</option>
       </select>
 
+
+      <div className='main_container'>
       <TransactionsTable selectedMonth={selectedMonth} />
        <StatisticsBox selectedMonth={selectedMonth} />
       <BarChart selectedMonth={selectedMonth} />
-      {/*<PieChart selectedMonth={selectedMonth} /> */}
+        <PieChart selectedMonth={selectedMonth} />
+        </div>
+      
     </div>
   );
 };
